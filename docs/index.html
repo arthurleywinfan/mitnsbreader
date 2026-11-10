@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NSB Finder</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NSB Finder">
+<meta name="theme-color" content="#8a1538">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="title">NSB Finder <span class="sub">MIT Invitational · HS</span></div>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-tab="find">Find</button>
+    <button class="tab" data-tab="practice">Practice</button>
+    <button class="tab" data-tab="rounds">Rounds</button>
+  </div>
+</header>
+
+<div id="offline" class="offline hidden">
+  <div class="offline-text">Downloading rounds for offline use… <span id="offline-n"></span></div>
+  <div class="bar"><div id="offline-bar"></div></div>
+</div>
+
+<main>
+  <section id="find" class="panel">
+    <input id="q" type="search" placeholder="Type words from the question or answer" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <div class="filters">
+      <select id="f-cat"></select>
+      <select id="f-year"></select>
+      <select id="f-round"></select>
+    </div>
+    <div class="filters2">
+      <select id="f-part"><option value="">Toss-ups &amp; bonuses</option><option>Toss-up</option><option>Bonus</option></select>
+      <label class="chk"><input type="checkbox" id="f-hide"> Hide answers</label>
+    </div>
+    <div id="count" class="count"></div>
+    <div id="results"></div>
+  </section>
+
+  <section id="practice" class="panel hidden">
+    <div class="filters">
+      <select id="p-cat"></select>
+      <select id="p-year"></select>
+      <select id="p-part"><option value="">Toss-ups &amp; bonuses</option><option>Toss-up</option><option>Bonus</option></select>
+    </div>
+    <div class="score"><span>Right <b id="s-right">0</b></span><span>Missed <b id="s-miss">0</b></span><button id="s-reset" class="link">Reset</button></div>
+    <div id="pcard"></div>
+  </section>
+
+  <section id="rounds" class="panel hidden">
+    <div id="roundlist"></div>
+  </section>
+</main>
+
+<!-- whole round, as text -->
+<div id="roundview" class="sheet hidden">
+  <div class="sheet-bar"><button class="back" data-close="roundview">‹ Back</button><span id="rv-title"></span><button id="rv-pdf" class="pill">PDF</button></div>
+  <div id="rv-body" class="sheet-body"></div>
+</div>
+
+<!-- original PDF -->
+<div id="pdfview" class="sheet hidden">
+  <div class="sheet-bar"><button class="back" data-close="pdfview">‹ Back</button><span id="pv-title"></span><span id="pv-page" class="muted"></span></div>
+  <div id="pv-body" class="sheet-body pdf-body"></div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
